@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="crochet">
+
+	<insert id="add">
+		INSERT INTO crochet
+		VALUES(NULL, #{userId}, #{croTitle}, #{croContent},#{croRate}, NOW(),#{croUuid}, #{croFilename})
+	</insert>
+	
+	<select id="list" resultType="crochet">
+		SELECT A.*, B.nickname  FROM crochet A, user B 
+		WHERE A.USERID = B.USERID
+	</select>
+	
+	<select id="myCroList" resultType="crochet">
+		SELECT CRO_TITLE, CRO_ID  FROM crochet
+		WHERE USERID = #{userId}
+	</select>
+	
+	 <select id="detail" resultType="crochet">
+    	 SELECT A.*, B.nickname  FROM crochet A, user B 
+		WHERE A.USERID = B.USERID
+		 AND A.CRO_ID = #{croId}
+    </select>
+    
+    <update id="update">
+    	UPDATE crochet
+		   SET 	cro_title = #{croTitle}
+        	  , cro_content = #{croContent}
+              , cro_rate = #{croRate}
+              , cro_uuid = #{croUuid}
+              , cro_filename = #{croFilename}
+	     WHERE cro_id=#{croId};
+    </update>
+    	
+    <delete id="delete">
+    	DELETE FROM crochet
+		WHERE cro_id=#{croId};
+    </delete>
+	
+</mapper>

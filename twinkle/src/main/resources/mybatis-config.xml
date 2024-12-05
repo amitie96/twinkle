@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "https://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="com.mysite.banjjak.model.User" alias="User"/>
+		<typeAlias type="com.mysite.banjjak.model.Crochet" alias="Crochet"/>
+		<typeAlias type="com.mysite.banjjak.model.Knitting" alias="Knitting"/>
+		
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mybatis/user.xml"/>
+		<mapper resource="mybatis/crochet.xml"/>
+		<mapper resource="mybatis/knitting.xml"/>
+	</mappers>
+</configuration>
