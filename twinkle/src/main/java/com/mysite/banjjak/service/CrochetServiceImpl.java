@@ -26,8 +26,8 @@ public class CrochetServiceImpl implements CrochetService {
 	}
 
 	@Override
-	public List<Crochet> myCroList(User user) {
-		return crochetDao.myCroList(user);
+	public List<Crochet> myCroList(User user, int page) {
+		return crochetDao.myCroList(user, page);
 	}
 
 	@Override

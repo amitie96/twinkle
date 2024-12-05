@@ -35,7 +35,7 @@ public class MypageController {
     @ResponseBody
     @GetMapping("/list/crochet/{page}")
     public List<Crochet> listCro(@SessionAttribute("userInfo") User user, @PathVariable int page) {
-    	return crochetService.myCroList(user);
+    	return crochetService.myCroList(user, page);
     }
     
     @ResponseBody
@@ -47,11 +47,12 @@ public class MypageController {
 	
 	 @GetMapping("/list") 
 	 public String join(@SessionAttribute("userInfo") User user, Model model) {
-		 List<Crochet> myCroList = crochetService.myCroList(user);
-		 model.addAttribute("myCroList",myCroList);
-		 
-		 List<Knitting> myKnitList = knittingService.myKnitList(user);
-		 model.addAttribute("myKnitList",myKnitList);
+			
+			
+			 //아래 두줄 지워도 js단에서 리스트를 불러와서 화면을 생성해서 불필요함. 
+			 List<Knitting> myKnitList = knittingService.myKnitList(user);
+			 model.addAttribute("myKnitList",myKnitList);
+			 
 		 
 		 return "mypage/list"; 
 	 }

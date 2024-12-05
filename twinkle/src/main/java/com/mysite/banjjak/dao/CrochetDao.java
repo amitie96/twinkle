@@ -10,7 +10,7 @@ public interface CrochetDao {
 
 	List<Crochet> findAll(Crochet crochet);
 
-	List<Crochet> myCroList(User user);
+	List<Crochet> myCroList(User user, int page);
 
 	Crochet findById(int croId);
 

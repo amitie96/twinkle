@@ -223,8 +223,8 @@
                 <li class="empty">데이터 없음</li>
             </ul>
 		     <div class="pagination">
-		        <button id="prev-page" disabled>&lt;</button>
-		        <button id="next-page">&gt;</button>
+		        <button id="knit-prev-page" disabled>&lt;</button>
+		        <button id="knit-next-page">&gt;</button>
 		  	</div>
         </div>
 
@@ -235,29 +235,12 @@
             	<li class="empty">데이터 없음</li>
             </ul>
             <div class="pagination">
-		        <button id="prev-page" disabled>&lt;</button>
-		        <button id="next-page">&gt;</button>
+		        <button id="cro-prev-page" disabled>&lt;</button> <!-- id값은 고유해야함 -->
+		        <button id="cro-next-page" >&gt;</button>
 		  	</div>
         </div>
     </div>
 
-    <!-- 페이징 처리 -->
-    <div class="pagination">
-        <!-- 이전 페이지 -->
-        <c:if test="${currentPage > 1}">
-            <a href="?page=${currentPage - 1}">&lt; 이전</a>
-        </c:if>
-
-        <!-- 페이지 번호 -->
-        <c:forEach var="pageNum" begin="1" end="${totalPages}">
-            <a href="?page=${pageNum}" class="${pageNum == currentPage ? 'disabled' : ''}">${pageNum}</a>
-        </c:forEach>
-
-        <!-- 다음 페이지 -->
-        <c:if test="${currentPage < totalPages}">
-            <a href="?page=${currentPage + 1}">다음 &gt;</a>
-        </c:if>
-    </div>
 </div>
 
 <div class="mypageee">
