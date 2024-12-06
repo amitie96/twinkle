@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -68,8 +68,8 @@ public class KnittingController {
 		return "redirect:/knitting/list";	
 	}
 	
-	@GetMapping("/detail/{knitId}")
-	public String detail(@PathVariable int knitId, Model model) {
+	@GetMapping("/detail")
+	public String detail(@RequestParam("knitId") int knitId, Model model) {
 		
 		Knitting knitting = knittingService.findById(knitId);
 	    
@@ -82,8 +82,8 @@ public class KnittingController {
 	    return "knitting/detail"; 
 	}
 	
-	@GetMapping("/edit/{knitId}")
-	public String edit(@SessionAttribute("userInfo") User user, @PathVariable int knitId, Knitting knitting, Model model) {
+	@GetMapping("/edit")
+	public String edit(@SessionAttribute("userInfo") User user, @RequestParam("knitId") int knitId, Knitting knitting, Model model) {
 		Knitting edit = knittingService.findById(knitId);
 		model.addAttribute("knitting", edit);
 		
@@ -93,8 +93,8 @@ public class KnittingController {
 		return "knitting/edit";
 	}
 	
-	@PostMapping("/edit/{knitId}")
-	public String update(@SessionAttribute("userInfo") User user, @PathVariable int knitId, Knitting knitting, MultipartFile uploadFile, Model model) {
+	@PostMapping("/edit")
+	public String update(@SessionAttribute("userInfo") User user, @RequestParam("knitId") int knitId, Knitting knitting, MultipartFile uploadFile, Model model) {
 		Knitting edit = knittingService.findById(knitId);
 		model.addAttribute("knitting", edit);
 				
@@ -119,8 +119,8 @@ public class KnittingController {
 		
 	}
 	
-	@GetMapping("/delete/{knitId}")
-	public String delete(@SessionAttribute("userInfo") User user, @PathVariable int knitId, Knitting knitting, MultipartFile uploadFile, Model model) {
+	@GetMapping("/delete")
+	public String delete(@SessionAttribute("userInfo") User user, @RequestParam("knitId") int knitId, Knitting knitting, MultipartFile uploadFile, Model model) {
 		Knitting edit = knittingService.findById(knitId);
 		model.addAttribute("knitting", edit);
 		

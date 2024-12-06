@@ -32,8 +32,8 @@ public class KnittingServiceImpl implements KnittingService {
 	}
 
 	@Override
-	public List<Knitting> myKnitList(User user) {
-		return knittingDao.myKnitList(user);
+	public List<Knitting> myKnitList(User user, int page) {
+		return knittingDao.myKnitList(user, page);
 	}
 
 	@Override

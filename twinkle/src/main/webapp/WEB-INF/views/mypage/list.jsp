@@ -102,6 +102,11 @@
             text-align: center;
             margin: 20px 0;
         }
+        .manage-section h3{
+        	 margin-bottom: 40px;
+            font-size: 24px; /* 글씨 크기 증가 */
+            font-family: 'IBM Plex Sans KR', sans-serif; /* 글씨체 적용 */
+        }
 
         .category {
             display: flex;
@@ -152,7 +157,7 @@
             color: #aaa;
         }
         .pagination button{
-        	background-color: #ffb3a5;
+        background-color: #ffb3a5;
         color: #fff;
         border: none;
         border-radius: 5px;
@@ -198,6 +203,19 @@
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
+    .list li,
+    .list a{
+    	text-decoration: none; /* 밑줄 제거 */
+	    color: black; /* 링크 색상 지정 */
+    }
+    .list a:hover{
+    	font-weight: bold;
+    }
+    .menu {
+        font-size: 18px; /* 글씨 크기 증가 */
+     	font-weight: bold;       
+    }
+
     </style>
     
     <style type="text/css">
@@ -217,8 +235,8 @@
 
     <div class="category">
         <!-- 대바늘 글 목록 -->
-        <div>
-            <label>대바늘</label>
+        <div class="list">
+            <label class="menu">대바늘</label>
             <ul class="box" id="knitting-list">
                 <li class="empty">데이터 없음</li>
             </ul>
@@ -229,8 +247,8 @@
         </div>
 
         <!-- 코바늘 글 목록 -->
-        <div>
-            <label>코바늘</label>
+        <div class="list">
+            <label class="menu">코바늘</label>
             <ul class="box" id="crochet-list">
             	<li class="empty">데이터 없음</li>
             </ul>

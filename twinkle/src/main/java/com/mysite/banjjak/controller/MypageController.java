@@ -41,7 +41,7 @@ public class MypageController {
     @ResponseBody
     @GetMapping("/list/knitting/{page}")
     public List<Knitting> listKinit(@SessionAttribute("userInfo") User user, @PathVariable int page) {
-    	return knittingService.myKnitList(user);
+    	return knittingService.myKnitList(user, page);
     }
 
 	
@@ -49,9 +49,11 @@ public class MypageController {
 	 public String join(@SessionAttribute("userInfo") User user, Model model) {
 			
 			
-			 //아래 두줄 지워도 js단에서 리스트를 불러와서 화면을 생성해서 불필요함. 
-			 List<Knitting> myKnitList = knittingService.myKnitList(user);
-			 model.addAttribute("myKnitList",myKnitList);
+	 //아래 두줄 지워도 js단에서 리스트를 불러와서 화면을 생성해서 불필요함. 
+		/*
+		 * List<Knitting> myKnitList = knittingService.myKnitList(user);
+		 * model.addAttribute("myKnitList",myKnitList);
+		 */
 			 
 		 
 		 return "mypage/list"; 

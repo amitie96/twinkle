@@ -13,7 +13,7 @@ public interface KnittingDao {
 
 	Knitting findById(int knitId);
 
-	List<Knitting> myKnitList(User user);
+	List<Knitting> myKnitList(User user, int page);
 
 	void update(Knitting knitting);
 
