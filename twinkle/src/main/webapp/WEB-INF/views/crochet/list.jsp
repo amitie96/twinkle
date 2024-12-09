@@ -162,7 +162,7 @@
    <div class="gallery">
 	<c:forEach var="crochet" items="${crochetList}">
 	    <div class="gallery-item">
-	    <a href="/crochet/detail/${crochet.croId}">
+	    <a href="/crochet/detail?croId=${crochet.croId}">
 	    	<img src="/upload/crochet/${crochet.croUuid}_${crochet.croFilename}">
 	        <h3>${crochet.croTitle}</h3>
 	        <div class="info">${crochet.nickname}</div>

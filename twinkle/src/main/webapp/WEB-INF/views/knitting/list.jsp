@@ -175,7 +175,7 @@
     <div class="gallery">
         <c:forEach var="knitting" items="${knittingList}">
             <div class="gallery-item">
-                <a href="/knitting/detail/${knitting.knitId}">
+                <a href="/knitting/detail?knitId=${knitting.knitId}">
                     <img src="/upload/knitting/${knitting.knitUuid}_${knitting.knitFilename}">
                     <h3>${knitting.knitTitle}</h3>
                     <div class="info">작성자 ${knitting.nickname}</div>

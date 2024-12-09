@@ -28,7 +28,6 @@
     
   	<p>${crochet.croContent}</p>
   	
-
     <jsp:include page="../layouts/footer.jsp"/>
 
 </body>
