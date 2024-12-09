@@ -104,7 +104,7 @@ public class CrochetController {
 				crochet.setCroUuid(croUuid);
 				
 			} catch (Exception e) {
-				return "redirect:/crochet/edit/{croId}";
+				return "redirect:/crochet/edit?croId=${crochet.croId}";
 			}
 		}
 		crochetService.update(crochet);

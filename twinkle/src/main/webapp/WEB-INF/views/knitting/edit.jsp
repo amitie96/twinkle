@@ -110,7 +110,7 @@
 <jsp:include page="../layouts/header.jsp"/>
 
 <div class="container">
-    <form:form method="post" enctype="multipart/form-data" action="/knitting/edit/${knitId}">
+    <form:form method="post" enctype="multipart/form-data" action="/knitting/edit?knitId=${knitting.knitId}">
         <h1>대바늘 도안 수정하기</h1>
         <div class="input-container title">
             <label for="knitTitle">제목</label>
@@ -142,7 +142,7 @@
             <button type="submit">수정하기</button>
         </div>
         <div class="submit-button">
-            <a href="../delete/${knitId}" class="delete">삭제하기</a>
+            <a href="../delete?knitId=${knitting.knitId}" class="delete">삭제하기</a>
         </div>
     </form:form>
 

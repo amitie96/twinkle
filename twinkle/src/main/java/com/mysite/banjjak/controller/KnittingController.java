@@ -108,7 +108,7 @@ public class KnittingController {
 				knitting.setKnitUuid(knitUuid);
 				
 			} catch (Exception e) {
-				return "redirect:/knitting/edit/{knitId}";
+				return "redirect:/knitting/edit?knitId=${knitting.knitId}";
 			}
 		}
 		
