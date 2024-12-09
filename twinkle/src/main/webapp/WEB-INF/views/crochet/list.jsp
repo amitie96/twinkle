@@ -53,6 +53,7 @@
 
         .options {
             display: flex;
+           display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 18px;
@@ -61,6 +62,23 @@
             max-width: 1200px;
             margin: 0 auto;
         }
+        
+         .share-option-box {
+            background-color: #FFEFD5; /* 박스 배경색 */
+            padding: 15px 30px; /* 내부 여백 */
+            border-radius: 8px; /* 둥근 모서리 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 */
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .share-option-box img {
+            margin-right: 10px;
+        }
+        
 
         .sort-options {
             display: flex;
@@ -151,13 +169,16 @@
         <button>&#128269;</button>
     </div>
 
-<div class="options">
-    <a href="write" class="share-option"><img src="../resources/images/pencil.png" alt="펜" width="20"> 나의 도안 공유하기</a>
-    <div class="sort-options">
-        <a href="?sort=latest">최신순</a>
-        <a href="?sort=popular">인기순</a>
+ <div class="options">
+        <a href="write" class="share-option-box">
+            <img src="../resources/images/pencil.png" width="20"> 나의 도안 공유하기
+        </a>
+        
+        <!-- <div class="sort-options">
+            <a href="?sort=latest">최신순</a>
+            <a href="?sort=popular">인기순</a>
+        </div> -->
     </div>
-</div>
 
    <div class="gallery">
 	<c:forEach var="crochet" items="${crochetList}">
