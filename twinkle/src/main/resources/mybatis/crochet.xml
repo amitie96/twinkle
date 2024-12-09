@@ -13,6 +13,12 @@
 		WHERE A.USERID = B.USERID
 	</select>
 	
+	 <select id="detail" resultType="crochet">
+    	 SELECT A.*, B.nickname  FROM crochet A, user B 
+		WHERE A.USERID = B.USERID
+		 AND A.CRO_ID = #{croId}
+    </select>
+    
 	<select id="myCroList" resultType="crochet">
 		SELECT P.* FROM (
 			SELECT  ROW_NUMBER() OVER (ORDER BY 1) AS ROW,CRO_TITLE, CRO_ID  <!-- row_number 사용시 over,oder by 필수 사용 -->
@@ -22,12 +28,6 @@
 		WHERE ROW BETWEEN ((#{page} - 1) * 5 + 1) AND (#{page} * 5)          <!-- 페이징 기본 공식 같은 거임 -->
 		
 	</select>
-	
-	 <select id="detail" resultType="crochet">
-    	 SELECT A.*, B.nickname  FROM crochet A, user B 
-		WHERE A.USERID = B.USERID
-		 AND A.CRO_ID = #{croId}
-    </select>
     
     <update id="update">
     	UPDATE crochet

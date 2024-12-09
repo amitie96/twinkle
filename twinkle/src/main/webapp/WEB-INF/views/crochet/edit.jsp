@@ -117,8 +117,8 @@
     <form:form method="post" enctype="multipart/form-data" action="/crochet/edit?croId=${crochet.croId}">
         <h1>코바늘 도안 수정하기</h1>
         <div class="input-container title">
-            <label for="knitTitle">제목</label>
-            <input type="text" id="knitTitle" name="knitTitle" value="${crochet.croTitle}" class="input-block" placeholder="제목을 입력하세요" autofocus required>
+            <label for="croTitle">제목</label>
+            <input type="text" id="croTitle" name="croTitle" value="${crochet.croTitle}" class="input-block" placeholder="제목을 입력하세요" autofocus required>
         </div>
 
         <div class="input-container difficulty">
@@ -146,7 +146,7 @@
             <button type="submit">수정하기</button>
         </div>
         <div class="submit-button">
-            <a href="../delete?croId=${crochet.croId}" class="delete">삭제하기</a>
+            <a href="/crochet/delete?croId=${crochet.croId}" class="delete">삭제하기</a>
         </div>
     </form:form>
 

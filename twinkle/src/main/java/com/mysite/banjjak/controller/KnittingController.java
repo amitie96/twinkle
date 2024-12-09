@@ -23,112 +23,107 @@ import com.mysite.banjjak.service.UserService;
 @Controller
 @RequestMapping("/knitting")
 public class KnittingController {
-	
-	@Autowired
+    
+    @Autowired
     KnittingService knittingService;
-	
-	@Autowired
-	UserService userService;
+    
+    @Autowired
+    UserService userService;
 
-	@GetMapping("/list")
-	public String list(Knitting knitting ,Model model) {
-		List<Knitting> knittingList = knittingService.findAll(knitting);
-		model.addAttribute("knittingList", knittingList);
-		
-		return "knitting/list";
-	}
-	
-	@GetMapping("/write")
-	public String write(@SessionAttribute("userInfo") User user, Model model) {
-		return "knitting/write";
-	}
-	
+    @GetMapping("/list")
+    public String list(Knitting knitting, Model model) {
+        List<Knitting> knittingList = knittingService.findAll(knitting);
+        model.addAttribute("knittingList", knittingList);
+        
+        return "knitting/list";
+    }
+    
+    @GetMapping("/write")
+    public String write(@SessionAttribute("userInfo") User user, Model model) {
+        return "knitting/write";
+    }
+    
 
-	@PostMapping("/write")
-	public String add(@SessionAttribute("userInfo") User user, Knitting knitting, MultipartFile uploadFile) {
-		
-		knitting.setUserId(user.getUserId());
-		
-		if(!uploadFile.isEmpty()) {
-			String knitFilename = uploadFile.getOriginalFilename();
-			String knitUuid = UUID.randomUUID().toString();
-			
-			try {
-				uploadFile.transferTo(new File("D:/upload/knitting/" + knitUuid + "_" + knitFilename));
-				knitting.setKnitFilename(knitFilename);
-				knitting.setKnitUuid(knitUuid);
-				
-			} catch (Exception e) {
-				return "redirect:/knitting/write";
-			}
-		}
-		
-		knittingService.add(knitting);
-		
-		return "redirect:/knitting/list";	
-	}
-	
-	@GetMapping("/detail")
-	public String detail(@RequestParam("knitId") int knitId, Model model) {
-		
-		Knitting knitting = knittingService.findById(knitId);
-	    
-	    if(knitting == null) {
-	    	return "redirect:/knitting/list";
-	    }
-	    
-		model.addAttribute("knitting", knitting);
-	    
-	    return "knitting/detail"; 
-	}
-	
-	@GetMapping("/edit")
-	public String edit(@SessionAttribute("userInfo") User user, @RequestParam("knitId") int knitId, Knitting knitting, Model model) {
-		Knitting edit = knittingService.findById(knitId);
-		model.addAttribute("knitting", edit);
-		
-		 List<Knitting> knittingList = knittingService.findAll(knitting);
-		 model.addAttribute("knittingList", knittingList);
-		 		
-		return "knitting/edit";
-	}
-	
-	@PostMapping("/edit")
-	public String update(@SessionAttribute("userInfo") User user, @RequestParam("knitId") int knitId, Knitting knitting, MultipartFile uploadFile, Model model) {
-		Knitting edit = knittingService.findById(knitId);
-		model.addAttribute("knitting", edit);
-				
-		if(!uploadFile.isEmpty()) {
-			String knitFilename = uploadFile.getOriginalFilename();
-			String knitUuid = UUID.randomUUID().toString();
-			
-			try {
-				uploadFile.transferTo(new File("D:/upload/knitting/" + knitUuid + "_" + knitFilename));
-				knitting.setKnitFilename(knitFilename);
-				knitting.setKnitUuid(knitUuid);
-				
-			} catch (Exception e) {
-				return "redirect:/knitting/edit?knitId=${knitting.knitId}";
-			}
-		}
-		
-		knittingService.update(knitting);
-		
-		
-		return "redirect:/mypage/list";
-		
-	}
-	
-	@GetMapping("/delete")
-	public String delete(@SessionAttribute("userInfo") User user, @RequestParam("knitId") int knitId, Knitting knitting, MultipartFile uploadFile, Model model) {
-		Knitting edit = knittingService.findById(knitId);
-		model.addAttribute("knitting", edit);
-		
-		knittingService.delete(knitting);
-		
-		
-		return "redirect:/mypage/list";
-	}
+    @PostMapping("/write")
+    public String add(@SessionAttribute("userInfo") User user, Knitting knitting, MultipartFile uploadFile) {
+        
+        knitting.setUserId(user.getUserId());
+        
+        if(!uploadFile.isEmpty()) {
+            String knitFilename = uploadFile.getOriginalFilename();
+            String knitUuid = UUID.randomUUID().toString();
+            
+            try {
+                uploadFile.transferTo(new File("D:/upload/knitting/" + knitUuid + "_" + knitFilename));
+                knitting.setKnitFilename(knitFilename);
+                knitting.setKnitUuid(knitUuid);
+                
+            } catch (Exception e) {
+                return "redirect:/knitting/write";
+            }
+        }
+        
+        knittingService.add(knitting);
+        
+        return "redirect:/knitting/list";    
+    }
+    
+    @GetMapping("/detail")
+    public String detail(@RequestParam("knitId") int knitId, Model model) {
+        
+        Knitting knitting = knittingService.findById(knitId);
+        
+        if(knitting == null) {
+            return "redirect:/knitting/list";
+        }
+        
+        model.addAttribute("knitting", knitting);
+        
+        return "knitting/detail"; 
+    }
+    
+    @GetMapping("/edit")
+    public String edit(@SessionAttribute("userInfo") User user, @RequestParam("knitId") int knitId, Knitting knitting, Model model) {
+        Knitting edit = knittingService.findById(knitId);
+        model.addAttribute("knitting", edit);
+        
+        List<Knitting> knittingList = knittingService.findAll(knitting);
+        model.addAttribute("knittingList", knittingList);
+        
+        return "knitting/edit";
+    }
+    
+    @PostMapping("/edit")
+    public String update(@SessionAttribute("userInfo") User user, @RequestParam("knitId") int knitId, Knitting knitting, MultipartFile uploadFile, Model model) {
+        Knitting edit = knittingService.findById(knitId);
+        model.addAttribute("knitting", edit);
+        
+        if(!uploadFile.isEmpty()) {
+            String knitFilename = uploadFile.getOriginalFilename();
+            String knitUuid = UUID.randomUUID().toString();
+            
+            try {
+                uploadFile.transferTo(new File("D:/upload/knitting/" + knitUuid + "_" + knitFilename));
+                knitting.setKnitFilename(knitFilename);
+                knitting.setKnitUuid(knitUuid);
+                
+            } catch (Exception e) {
+                return "redirect:/knitting/edit?knitId=" + knitId;
+            }
+        }
+        
+        knittingService.update(knitting);
+        
+        return "redirect:/mypage/list";
+    }
+    
+    @GetMapping("/delete")
+    public String delete(@SessionAttribute("userInfo") User user, @RequestParam("knitId") int knitId, Knitting knitting, MultipartFile uploadFile, Model model) {
+        Knitting edit = knittingService.findById(knitId);
+        model.addAttribute("knitting", edit);
+        
+        knittingService.delete(knitting);
+        
+        return "redirect:/mypage/list";
+    }
 }
-
-

@@ -142,7 +142,7 @@
             <button type="submit">수정하기</button>
         </div>
         <div class="submit-button">
-            <a href="../delete?knitId=${knitting.knitId}" class="delete">삭제하기</a>
+            <a href="/knitting/delete?knitId=${knitting.knitId}" class="delete">삭제하기</a>
         </div>
     </form:form>
 

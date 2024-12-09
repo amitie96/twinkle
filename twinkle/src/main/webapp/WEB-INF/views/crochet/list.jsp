@@ -156,41 +156,39 @@
 <body>
 
 
-<jsp:include page="../layouts/header.jsp"/>
-
-<div class="container">
-
-    <img src="../resources/images/crochet.png" alt="코바늘" width="250" height="100">
-   
-</div>
-
-<div class="search-bar">
-        <input type="text" placeholder="제목을 입력하세요">
-        <button>&#128269;</button>
-    </div>
-
- <div class="options">
-        <a href="write" class="share-option-box">
-            <img src="../resources/images/pencil.png" width="20"> 나의 도안 공유하기
-        </a>
-        
-        <!-- <div class="sort-options">
-            <a href="?sort=latest">최신순</a>
-            <a href="?sort=popular">인기순</a>
-        </div> -->
-    </div>
-
-   <div class="gallery">
-	<c:forEach var="crochet" items="${crochetList}">
-	    <div class="gallery-item">
-	    <a href="/crochet/detail?croId=${crochet.croId}">
-	    	<img src="/upload/crochet/${crochet.croUuid}_${crochet.croFilename}">
-	        <h3>${crochet.croTitle}</h3>
-	        <div class="info">${crochet.nickname}</div>
-	        <div class="icons">난이도: ${crochet.croRate}</div>
-	       </a>
+	<jsp:include page="../layouts/header.jsp"/>
+	
+	<div class="container">
+	    <img src="../resources/images/crochet.png" alt="코바늘" width="250" height="100">
+	</div>
+	
+	<div class="search-bar">
+	        <input type="text" placeholder="제목을 입력하세요">
+	        <button>&#128269;</button>
 	    </div>
-	</c:forEach>
+	
+	 <div class="options">
+	        <a href="write" class="share-option-box">
+	            <img src="../resources/images/pencil.png" width="20"> 나의 도안 공유하기
+	        </a>
+	        
+	        <!-- <div class="sort-options">
+	            <a href="?sort=latest">최신순</a>
+	            <a href="?sort=popular">인기순</a>
+	        </div> -->
+	    </div>
+	
+	   <div class="gallery">
+		<c:forEach var="crochet" items="${crochetList}">
+		    <div class="gallery-item">
+		    <a href="/crochet/detail?croId=${crochet.croId}">
+		    	<img src="/upload/crochet/${crochet.croUuid}_${crochet.croFilename}">
+		        <h3>${crochet.croTitle}</h3>
+		        <div class="info">${crochet.nickname}</div>
+		        <div class="icons">난이도: ${crochet.croRate}</div>
+		       </a>
+		    </div>
+		</c:forEach>
 	</div>
 	
 <jsp:include page="../layouts/footer.jsp"/>
